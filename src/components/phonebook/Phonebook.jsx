@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { nanoid } from 'nanoid';
 import "./Phonebook.css"
 import Form from "components/Form/Form";
-import DeleteBtn from "components/deleteBtn/deleteBtn"
+import DeleteBtn from "components/DeleteBtn/DeleteBtn"
 import Filter from "components/Filter/Filter"
 
 class Phonebook extends Component {
@@ -33,7 +33,11 @@ class Phonebook extends Component {
     renderContacts = (filterValue, contacts) => {
         if (!filterValue) {
             return contacts.map(contact =>
-            { return <li className="contacts" key={contact.id}>{contact.name}: {contact.number} <DeleteBtn delete={this.delete} /></li> })
+            {
+                return <li className="contacts" key={contact.id}>{contact.name}: {contact.number}
+                            <button className="button-contact" onClick={() => { this.delete(contact.id) }}>Delete</button>
+                        </li>
+            })
         };
         const filterFunction = contacts.filter((el) => el.name.toLowerCase().includes(filterValue.toLowerCase()));
         console.log(filterFunction);
@@ -47,7 +51,12 @@ class Phonebook extends Component {
         )
     }
     onChange = (evt) => this.setState({ ...this.setState, filter: evt.target.value });
-    delete = () => 
+    delete = (id) => {
+        console.log(id);
+        const newContactList = this.state.contacts.filter((contact) =>
+            contact.id !== (id));
+        this.setState({ ...this.setState, contacts: newContactList });
+    }
     render() {
         return (
             <div>
