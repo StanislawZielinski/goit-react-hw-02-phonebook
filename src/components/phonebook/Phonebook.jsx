@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { nanoid } from 'nanoid';
 import "./Phonebook.css"
 import Form from "components/Form/Form";
-// import Contacts from "components/Contacts/Contacts"
+import DeleteBtn from "components/deleteBtn/deleteBtn"
 import Filter from "components/Filter/Filter"
 
 class Phonebook extends Component {
@@ -20,32 +20,42 @@ class Phonebook extends Component {
         const form = evt.currentTarget;
         const name = form.elements.name.value;
         const phoneNumber = form.elements.number.value;
+        for (const contact of this.state.contacts) {
+            if (contact.name.includes(name)) {
+                alert(`${name} is already in contacts`)
+                form.reset();
+                return
+            }  
+        }
         this.setState({...this.state, contacts:[...this.state.contacts,{name:name, id:nanoid(), number:phoneNumber} ]})
         form.reset();
     }
     renderContacts = (filterValue, contacts) => {
         if (!filterValue) {
             return contacts.map(contact =>
-            { return <li className="contacts" key={contact.id}>{contact.name}: {contact.number} </li> })
+            { return <li className="contacts" key={contact.id}>{contact.name}: {contact.number} <DeleteBtn delete={this.delete} /></li> })
         };
         const filterFunction = contacts.filter((el) => el.name.toLowerCase().includes(filterValue.toLowerCase()));
         console.log(filterFunction);
-
             return (
             filterFunction.map(contact =>
-            { return <li className="contacts" key={contact.id}>{contact.name}: {contact.number} </li> })
+            {
+                return <li className="contacts" key={contact.id}>{contact.name}: {contact.number}
+                <DeleteBtn delete={this.delete}/>
+                </li>
+            })
         )
     }
     onChange = (evt) => this.setState({ ...this.setState, filter: evt.target.value });
-
+    delete = () => 
     render() {
         return (
             <div>
                 <Form handleSubmit={this.handleSubmit} />
                 <div>
-                <Filter onChange={this.onChange} />
+                    <Filter onChange={this.onChange} />
                     <ul>{this.renderContacts(this.state.filter, this.state.contacts)}</ul>
-                 </div>
+                </div>
             </div>
     )}
 }

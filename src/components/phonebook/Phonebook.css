@@ -30,3 +30,12 @@
 .contacts-title {
     margin-bottom: 1px;
 }
+.button-contact {
+    background-color: red;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.button-contact:hover {
+    cursor: pointer;
+}
