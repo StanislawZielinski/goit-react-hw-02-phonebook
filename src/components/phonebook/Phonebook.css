@@ -1,0 +1,32 @@
+.label {
+    font-size: 14px;
+}
+.input {
+    margin: 5px;
+    border: solid 2px goldenrod;
+}
+.filter-title {
+    margin-bottom: 1px;
+    font-size: 14px;
+}
+.form {
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.button {
+    background-color: aquamarine;
+    width: 50%;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+.button:hover {
+    cursor: pointer;
+}
+.contacts {
+    font-size: 14px;
+}
+.contacts-title {
+    margin-bottom: 1px;
+}
