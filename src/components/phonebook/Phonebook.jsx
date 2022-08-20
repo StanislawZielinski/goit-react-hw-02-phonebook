@@ -35,24 +35,22 @@ class Phonebook extends Component {
             return contacts.map(contact =>
             {
                 return <li className="contacts" key={contact.id}>{contact.name}: {contact.number}
-                            <button className="button-contact" onClick={() => { this.delete(contact.id) }}>Delete</button>
+                            <DeleteBtn delete={this.delete} id={contact.id} />
                         </li>
             })
         };
         const filterFunction = contacts.filter((el) => el.name.toLowerCase().includes(filterValue.toLowerCase()));
-        console.log(filterFunction);
             return (
             filterFunction.map(contact =>
             {
                 return <li className="contacts" key={contact.id}>{contact.name}: {contact.number}
-                <DeleteBtn delete={this.delete}/>
+                    <DeleteBtn delete={this.delete} id={contact.id} />
                 </li>
             })
         )
     }
     onChange = (evt) => this.setState({ ...this.setState, filter: evt.target.value });
     delete = (id) => {
-        console.log(id);
         const newContactList = this.state.contacts.filter((contact) =>
             contact.id !== (id));
         this.setState({ ...this.setState, contacts: newContactList });
