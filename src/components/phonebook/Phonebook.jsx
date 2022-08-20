@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { nanoid } from 'nanoid';
-import styles from "components/phonebook/Phonebook.css"
+import "./Phonebook.css"
 import Form from "components/Form/Form";
 // import Contacts from "components/Contacts/Contacts"
 import Filter from "components/Filter/Filter"
