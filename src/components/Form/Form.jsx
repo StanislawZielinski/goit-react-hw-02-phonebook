@@ -6,7 +6,8 @@ class Form extends Component {
 render() {
     return (
             <form className="form" onSubmit={this.props.handleSubmit}>
-                <p>Phonebook</p>
+            <p className="title">Phonebook</p>
+            <div className="input-wrapper">
                 <label className="label">Name
                     <input
                     className="input"
@@ -27,6 +28,7 @@ render() {
                         required
                         />
                 </label>
+            </div>
                 <button className="button" type="submit">Add contact</button>
             </form>
     )}

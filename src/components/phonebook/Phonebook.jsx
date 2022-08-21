@@ -4,6 +4,7 @@ import "./Phonebook.css"
 import Form from "components/Form/Form";
 import DeleteBtn from "components/DeleteBtn/DeleteBtn"
 import Filter from "components/Filter/Filter"
+import Contacts from "components/Contacts/Contacts";
 
 class Phonebook extends Component {
     state = {
@@ -57,11 +58,12 @@ class Phonebook extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <Form handleSubmit={this.handleSubmit} />
-                <div>
+                <div className="contacts-wrapper">
                     <Filter onChange={this.onChange} />
-                    <ul>{this.renderContacts(this.state.filter, this.state.contacts)}</ul>
+                    <Contacts renderContacts={this.renderContacts}
+                            filter={this.state.filter} contacts={this.state.contacts} />
                 </div>
             </div>
     )}

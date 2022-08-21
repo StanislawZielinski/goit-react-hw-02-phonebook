@@ -1,16 +1,19 @@
+.wrapper {
+    border: solid 2px black;
+}
 .label {
     font-size: 14px;
 }
 .input {
     margin: 5px;
-    border: solid 2px goldenrod;
+    border: solid 2px lightgreen;
 }
 .filter-title {
     margin-bottom: 1px;
     font-size: 14px;
 }
 .form {
-    border: solid 2px black;
+    border-bottom: solid 2px black;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -27,11 +30,11 @@
 .contacts {
     font-size: 14px;
 }
-.contacts-title {
-    margin-bottom: 1px;
+.title {
+    margin-bottom: 5px;
 }
 .button-contact {
-    background-color: red;
+    background-color: lightcoral;
     font-size: 12px;
     margin-bottom: 5px;
     margin-left: 7px;
@@ -39,4 +42,14 @@
 
 .button-contact:hover {
     cursor: pointer;
+}
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.contacts-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
